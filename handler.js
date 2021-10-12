@@ -13,7 +13,7 @@ const request = {
 module.exports.postSlack = async (event, context) => {
   
   // const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;
-  const message = "テストだよ";
+  const message = "テストだよ!";
   
   try {
     const parameterStore = await ssm.getParameter(request).promise();
