@@ -1,0 +1,25 @@
+service: serverless-sample
+
+custom:
+  defaultStage: dev
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage, self:custom.defaultStage}
+  region: ap-northeast-1
+  iam:
+    role: arn:aws:iam::691795853775:role/lambda_basic_execution
+  
+package:
+  exclude:
+    - .git/**
+
+functions:
+  postSlack:
+    handler: handler.postSlack
+    events:
+      - http:
+          path: slack
+          method: post
+          cors: true
